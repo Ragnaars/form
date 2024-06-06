@@ -1,0 +1,118 @@
+<ion-grid>
+  <ion-row>
+    <ion-col size="12">
+      <ion-card>
+        <div align="right" class="searchTable">
+          <div class="grid grid-cols-2 md:grid-cols-3">
+            <div></div>
+            <div></div>
+            <div><ion-searchbar animated="true" class="ion-text-center" placeholder="Buscar"
+                (ionInput)="updateFilter($event)"></ion-searchbar></div>
+          </div>
+
+        </div>
+        <ngx-datatable #table class="material" [columnMode]="ColumnMode.force" [headerHeight]="50" [footerHeight]="50"
+          [rowHeight]="'auto'" [loadingIndicator]="loadingIndicator" [scrollbarH]="true" [limit]="10" [rows]="rows">
+
+          <ngx-datatable-column prop="vuelo">
+            <ng-template let-column="column" ngx-datatable-header-template let-sort="sortFn">
+              <span class="tableHeader">
+                Vuelo
+              </span>
+            </ng-template>
+          </ngx-datatable-column>
+
+          <ngx-datatable-column prop="compania">
+            <ng-template let-column="column" ngx-datatable-header-template let-sort="sortFn">
+              <span class="tableHeader">
+                Compañia
+              </span>
+            </ng-template>
+          </ngx-datatable-column>
+
+          <ngx-datatable-column prop="pax">
+            <ng-template let-column="column" ngx-datatable-header-template let-sort="sortFn">
+              <span class="tableHeader">
+                Pax
+              </span>
+            </ng-template>
+          </ngx-datatable-column>
+
+          <!--Columna Objeto-->
+          <ngx-datatable-column prop="objeto">
+            <ng-template let-column="column" ngx-datatable-header-template let-sort="sortFn">
+              <span class="tableHeader">
+                Objeto
+              </span>
+            </ng-template>
+          </ngx-datatable-column>
+
+          <!--Columna Ticket-->
+          <ngx-datatable-column prop="ticket">
+            <ng-template let-column="column" ngx-datatable-header-template let-sort="sortFn">
+              <span class="tableHeader">
+                Ticket
+              </span>
+            </ng-template>
+          </ngx-datatable-column>
+
+          <!--Columna Funcionario a cargo-->
+          <ngx-datatable-column prop="funcionario">
+            <ng-template let-column="column" ngx-datatable-header-template let-sort="sortFn">
+              <span class="tableHeader">
+                Funcionario a cargo
+              </span>
+            </ng-template>
+          </ngx-datatable-column>
+
+          <!--Fecha de registro de objeto-->
+
+          <ngx-datatable-column name="Hora de registro" prop="fechaReg">
+            <ng-template let-column="column" ngx-datatable-header-template let-sort="sortFn">
+              <span class="tableHeader">
+                Hora de registro
+              </span>
+            </ng-template>
+          </ngx-datatable-column>
+
+          <!--Estado de registro-->
+
+          <ngx-datatable-column name="Hora de registro" prop="estado">
+            <ng-template let-column="column" ngx-datatable-header-template let-sort="sortFn">
+              <span class="tableHeader">
+                Estado
+              </span>
+            </ng-template>
+          </ngx-datatable-column>
+
+          <ngx-datatable-column [frozenRight]="true">
+            <ng-template let-column="column" ngx-datatable-header-template let-sort="sortFn">
+              <span class="tableHeader">
+                Acciones
+              </span>
+            </ng-template>
+            <ng-template ngx-datatable-cell-template let-row="row">
+              @if(row.estado == 'INGRESADO'){
+              <ion-button style="--background: var(--color-pantone-130c)" size="small">
+                ENTREGAR
+              </ion-button>
+              }@else{
+              <ion-button style="--background : var(--color-pantone-312c)" size="small">
+                REVISAR
+              </ion-button>
+              }
+            </ng-template>
+          </ngx-datatable-column>
+
+
+        </ngx-datatable>
+
+
+
+
+
+
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>

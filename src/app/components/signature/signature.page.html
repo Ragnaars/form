@@ -1,0 +1,25 @@
+<!-- Canvas for drawing signature -->
+<canvas #canvas class="border border-gray-300 rounded-lg w-full h-64"></canvas>
+
+<!-- Container for buttons -->
+<div class="flex justify-between mt-4">
+  <!-- Spacer -->
+  <div class="w-1/12"></div>
+  
+  <!-- Save button -->
+  <div class="w-4/12">
+    <button  id="present-alert" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded" (click)="save()">Guardar</button>
+  </div>
+  
+  <!-- Spacer -->
+  <div class="w-2/12"></div>
+  
+  <!-- Clear button -->
+  <div class="w-4/12">
+    <button type="button" class="w-full bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded" (click)="clear()">Borrar</button>
+  </div>
+  
+  <!-- Spacer -->
+  <div class="w-1/12"></div>
+</div>
+

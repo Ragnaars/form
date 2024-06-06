@@ -1,0 +1,25 @@
+<app-navbar [title]="title"></app-navbar>
+<ion-content class="bg-pantone-130c flex justify-center items-center h-screen">
+  <div class="bg-white flex justify-center items-center h-screen ion-padding">
+    <div class="w-full max-w-md p-4 space-y-6 bg-white rounded-lg  text-center ">
+      <div class="text-center">
+        <img src="assets/icon/USER.png" alt="DGAC Logo" class="mx-auto mb-4 w-20 h-28" />
+        <h1 class="text-2xl font-bold text-pantone-286c">Automatización ANESA</h1>
+        <ion-button (click)="abrirMenu()" expand="block" routerLink="/form-retenidos"
+          class="bg-pantone-286c text-white hover:bg-pantone-312c">
+          Empezar
+        </ion-button>
+        <p class="mt-2 text-gray-700">Facilitando la gestión de formularios en el aeropuerto</p>
+      </div>
+      <div class="w-full">
+        <div class="image-container mx-auto mb-4">
+          <img src="assets/icon/avsec2.webp" alt="Automatización" class="image-blurred w-48 h-48" />
+        </div>
+        <p class="mt-2 text-gray-700">Optimiza tus procesos con nuestra aplicación rápida y eficiente.</p>
+      </div>
+      <div class="space-y-4">
+        <!-- Espacio adicional si es necesario -->
+      </div>
+    </div>
+  </div>
+</ion-content>

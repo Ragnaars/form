@@ -1,0 +1,102 @@
+<ion-app>
+  <ion-menu contentId="main-content">
+    <ion-header class="ion-no-border">
+      <div class="bg"></div>
+      <ion-item lines="none">
+        <ion-avatar slot="start">
+          <img src="assets/icon/USER.png" alt="" />
+        </ion-avatar>
+        <ion-label>
+          <h2>{{ profile.name }}</h2>
+          <p>
+            <ion-text color="white">
+              {{ profile.email }}
+            </ion-text>
+          </p>
+        </ion-label>
+      </ion-item>
+    </ion-header>
+
+    <ion-content>
+      @for(page of pages ; track $index){
+
+      <ion-menu-toggle class="menu-items" [autoHide]="false">
+        @if(page.title === 'Formularios'){
+        <ion-item
+          id="open-modal"
+          lines="none"
+          class="ion-padding-start"
+          [ngClass]="{ selected: page?.active }"
+          (click)="onItemTap(page, $event)"
+        >
+          <ion-icon
+            [md]="page.icon + '-sharp'"
+            [ios]="page.icon + '-outline'"
+          ></ion-icon>
+
+          <ion-label>
+            {{ page.title }}
+          </ion-label>
+        </ion-item>
+
+        <!--MODAL-->
+
+        <ion-modal
+          #modal
+          trigger="open-modal"
+          [initialBreakpoint]="0.25"
+          [breakpoints]="[0, 0.25, 0.5, 0.75]"
+        >
+          <ng-template>
+            <ion-content>
+              <ion-searchbar
+                animated="true"
+                placeholder="Buscar"
+                (click)="modal.setCurrentBreakpoint(0.75)"
+                (ionInput)="handleInput($event)"
+              ></ion-searchbar>
+              <ion-list>
+                @for(form of results; track $index){
+                <ion-item
+                  lines="none"
+                  class="ion-padding-start"
+                  (click)="goToForm(form.url)"
+                >
+                  <ion-icon [name]="form.icon" class = "modal-icon"></ion-icon>
+                  <div class="label-form">
+                    <ion-label>
+                      <h2>{{ form.nombre }}</h2>
+                      <p>{{ form.url }}</p>
+                    </ion-label>
+                  </div>
+                </ion-item>
+                }
+              </ion-list>
+            </ion-content>
+          </ng-template>
+        </ion-modal>
+
+        }@else{
+        <ion-item
+          lines="none"
+          class="ion-padding-start"
+          [ngClass]="{ selected: page?.active }"
+          (click)="onItemTap(page, $event)"
+        >
+          <ion-icon
+            [md]="page.icon + '-sharp'"
+            [ios]="page.icon + '-outline'"
+          ></ion-icon>
+
+          <ion-label>
+            {{ page.title }}
+          </ion-label>
+        </ion-item>
+        }
+      </ion-menu-toggle>
+
+      }
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="main-content"></ion-router-outlet>
+</ion-app>

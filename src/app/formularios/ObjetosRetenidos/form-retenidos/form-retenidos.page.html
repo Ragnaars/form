@@ -1,0 +1,322 @@
+<app-navbar [title]="title"></app-navbar>
+
+<ion-content>
+  <div class="container mx-auto ion-padding-start ion-padding-end ion-padding-bottom bg-slate-100 shadow-lg rounded-lg">
+    <ion-card>
+      <div class="grid grid-cols-2 items-center py-2 ion-padding">
+        <div class="flex items-center">
+          <ion-buttons>
+            <ion-back-button style="--color : var(--color-pantone-312c)"
+              defaultHref="/bandeja-entrada-retenidos"></ion-back-button>
+          </ion-buttons>
+        </div>
+        <div>
+          <div class="flex items-center justify-end">
+            <ion-button id="open-qr" type="button" style="--background: var(--color-pantone-312c) ;"
+              class=" rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
+              <ion-icon class="w-20 h-6" name="qr-code"></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+      </div>
+    </ion-card>
+    <ion-card class="ion-padding">
+      <div class="text-left ion-padding-top ion-padding-bottom">
+        <h1 class="text-xl font-semibold text-gray-900">Datos del vuelo</h1>
+      </div>
+      <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <!-- Company Input -->
+          <div class="mb-4">
+            <label for="compania" class="block text-sm font-medium text-gray-700">Compañía *</label>
+            <input type="text" id="compania" formControlName="compania"
+              class="mt-1 block w-full bg-gray-50 border border-gray-300 text-gray-900 rounded-lg p-2 focus:ring-blue-500 focus:border-blue-500"
+              placeholder="Compañía" required />
+            <div *ngIf="formulario.controls['compania'].invalid && formulario.controls['compania'].touched"
+              class="text-red-500 text-sm mt-1">
+              Este campo es obligatorio.
+            </div>
+          </div>
+
+          <!-- Date Input -->
+          <div class="mb-4">
+            <label for="date" class="block text-sm font-medium text-gray-700">Fecha *</label>
+            <input type="date" id="date" formControlName="fechaVuelo"
+              class="mt-1 block w-full bg-gray-50 border border-gray-300 text-gray-900 rounded-lg p-2 focus:ring-blue-500 focus:border-blue-500"
+              required />
+            <div *ngIf="formulario.controls['fechaVuelo'].invalid && formulario.controls['fechaVuelo'].touched"
+              class="text-red-500 text-sm mt-1">
+              Este campo es obligatorio.
+            </div>
+          </div>
+
+          <!-- Time Input -->
+          <div class="mb-4">
+            <label for="time" class="block text-sm font-medium text-gray-700">Hora *</label>
+            <div class="relative">
+              <input type="time" id="time" formControlName="horaVuelo"
+                class="mt-1 block w-full bg-gray-50 border border-gray-300 text-gray-900 rounded-lg p-2 focus:ring-blue-500 focus:border-blue-500"
+                min="09:00" max="18:00" required />
+              <div *ngIf="formulario.controls['horaVuelo'].invalid && formulario.controls['horaVuelo'].touched"
+                class="text-red-500 text-sm mt-1">
+                Este campo es obligatorio.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <!-- Flight Input -->
+          <div class="mb-4">
+            <label for="vuelo" class="block text-sm font-medium text-gray-700">Vuelo *</label>
+            <input type="text" id="vuelo" formControlName="vuelo"
+              class="mt-1 block w-full bg-gray-50 border border-gray-300 text-gray-900 rounded-lg p-2 focus:ring-blue-500 focus:border-blue-500"
+              placeholder="Vuelo" required />
+            <div *ngIf="formulario.controls['vuelo'].invalid && formulario.controls['vuelo'].touched"
+              class="text-red-500 text-sm mt-1">
+              Este campo es obligatorio.
+            </div>
+          </div>
+
+          <!-- Destination Input -->
+          <div class="mb-4">
+            <label for="destino" class="block text-sm font-medium text-gray-700">Destino *</label>
+            <input type="text" id="destino" formControlName="destino"
+              class="mt-1 block w-full bg-gray-50 border border-gray-300 text-gray-900 rounded-lg p-2 focus:ring-blue-500 focus:border-blue-500"
+              placeholder="Destino" required />
+            <div *ngIf="formulario.controls['destino'].invalid && formulario.controls['destino'].touched"
+              class="text-red-500 text-sm mt-1">
+              Este campo es obligatorio.
+            </div>
+          </div>
+
+          <!-- Boarding Gate Select -->
+          <div class="mb-4">
+            <label for="puenteEmb" class="block text-sm font-medium text-gray-700">Puerta de Embarque</label>
+            <select id="puenteEmb" formControlName="puenteEmb"
+              class="mt-1 block w-full bg-gray-50 border border-gray-300 text-gray-900 rounded-lg p-2 focus:ring-blue-500 focus:border-blue-500">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="height: 1px; background-color: rgb(221, 214, 214);" class="w-full"></div>
+
+        <div class="mt-6 mb-3">
+          <h1 class="text-xl font-semibold text-gray-900">Registro</h1>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="space-y-4">
+            <!-- Object Input -->
+            <div>
+              <label for="objeto" class="block text-sm font-medium text-gray-700">Objeto *</label>
+              <input type="text" id="objeto" formControlName="objeto"
+                class="mt-1 block w-full bg-gray-50 border border-gray-300 text-gray-900 rounded-lg p-2 focus:ring-blue-500 focus:border-blue-500"
+                placeholder="Objeto" required />
+              <div *ngIf="formulario.controls['objeto'].invalid && formulario.controls['objeto'].touched"
+                class="text-red-500 text-sm mt-1">
+                Este campo es obligatorio.
+              </div>
+            </div>
+
+            <!-- Quantity and Model Inputs -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label for="number-input" class="block text-sm font-medium text-gray-700">Cantidad *</label>
+                <input type="number" id="number-input" formControlName="cantidad"
+                  class="mt-1 block w-full bg-gray-50 border border-gray-300 text-gray-900 rounded-lg p-2 focus:ring-blue-500 focus:border-blue-500"
+                  placeholder="Cantidad" required />
+                <div *ngIf="formulario.controls['cantidad'].invalid && formulario.controls['cantidad'].touched"
+                  class="text-red-500 text-sm mt-1">
+                  Este campo es obligatorio.
+                </div>
+              </div>
+              <div>
+                <label for="modelo" class="block text-sm font-medium text-gray-700">Modelo *</label>
+                <input type="text" id="modelo" formControlName="modelo"
+                  class="mt-1 block w-full bg-gray-50 border border-gray-300 text-gray-900 rounded-lg p-2 focus:ring-blue-500 focus:border-blue-500"
+                  placeholder="Modelo" required />
+                <div *ngIf="formulario.controls['modelo'].invalid && formulario.controls['modelo'].touched"
+                  class="text-red-500 text-sm mt-1">
+                  Este campo es obligatorio.
+                </div>
+              </div>
+            </div>
+
+            <!-- Seat and Particular Select -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label for="asiento" class="block text-sm font-medium text-gray-700">Asiento *</label>
+                <input type="number" id="asiento" formControlName="asiento"
+                  class="mt-1 block w-full bg-gray-50 border border-gray-300 text-gray-900 rounded-lg p-2 focus:ring-blue-500 focus:border-blue-500"
+                  placeholder="Asiento" required />
+                <div *ngIf="formulario.controls['asiento'].invalid && formulario.controls['asiento'].touched"
+                  class="text-red-500 text-sm mt-1">
+                  Este campo es obligatorio.
+                </div>
+              </div>
+              <div>
+                <label for="particular" class="block text-sm font-medium text-gray-700">Particular *</label>
+                <select id="particular" formControlName="particular"
+                  class="mt-1 block w-full bg-gray-50 border border-gray-300 text-gray-900 rounded-lg p-2 focus:ring-blue-500 focus:border-blue-500">
+                  <option selected>Particular</option>
+                  <option value="US">Inst</option>
+                </select>
+                <div *ngIf="formulario.controls['particular'].invalid && formulario.controls['particular'].touched"
+                  class="text-red-500 text-sm mt-1">
+                  Este campo es obligatorio.
+                </div>
+              </div>
+            </div>
+
+            <!-- Ticket and Avsec Officer Select -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label for="ticket" class="block text-sm font-medium text-gray-700">Ticket *</label>
+                <input type="text" id="ticket" formControlName="ticket"
+                  class="mt-1 block w-full bg-gray-50 border border-gray-300 text-gray-900 rounded-lg p-2 focus:ring-blue-500 focus:border-blue-500"
+                  placeholder="Ticket" required />
+                <div *ngIf="formulario.controls['ticket'].invalid && formulario.controls['ticket'].touched"
+                  class="text-red-500 text-sm mt-1">
+                  Este campo es obligatorio.
+                </div>
+              </div>
+              <div>
+                <label for="funcionario" class="block text-sm font-medium text-gray-700">Funcionario Avsec *</label>
+                <select id="funcionario" formControlName="funcionario"
+                  class="mt-1 block w-full bg-gray-50 border border-gray-300 text-gray-900 rounded-lg p-2 focus:ring-blue-500 focus:border-blue-500">
+                  <option selected>Funcionario Avsec</option>
+                  <option value="US">Jose Gonzalez</option>
+                  <option value="US">Maria Perez</option>
+                  <option value="US">Juan Rodriguez</option>
+                </select>
+                <div *ngIf="formulario.controls['funcionario'].invalid && formulario.controls['funcionario'].touched"
+                  class="text-red-500 text-sm mt-1">
+                  Este campo es obligatorio.
+                </div>
+              </div>
+            </div>
+
+            <!-- Phone Number Input -->
+            <div>
+              <label for="numTel" class="block text-sm font-medium text-gray-700">Número Telefónico *</label>
+              <input type="text" id="numTel" formControlName="numTel"
+                class="mt-1 block w-full bg-gray-50 border border-gray-300 text-gray-900 rounded-lg p-2 focus:ring-blue-500 focus:border-blue-500"
+                placeholder="Número Telefónico" required />
+              <div *ngIf="formulario.controls['numTel'].invalid && formulario.controls['numTel'].touched"
+                class="text-red-500 text-sm mt-1">
+                Este campo es obligatorio.
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <!-- Brand Input -->
+            <div>
+              <label for="marca" class="block text-sm font-medium text-gray-700">Marca *</label>
+              <input type="text" id="marca" formControlName="marca"
+                class="mt-1 block w-full bg-gray-50 border border-gray-300 text-gray-900 rounded-lg p-2 focus:ring-blue-500 focus:border-blue-500"
+                placeholder="Marca" required />
+              <div *ngIf="formulario.controls['marca'].invalid && formulario.controls['marca'].touched"
+                class="text-red-500 text-sm mt-1">
+                Este campo es obligatorio.
+              </div>
+            </div>
+
+            <!-- Serial Input -->
+            <div>
+              <label for="serie" class="block text-sm font-medium text-gray-700">Serie *</label>
+              <input type="text" id="serie" formControlName="serie"
+                class="mt-1 block w-full bg-gray-50 border border-gray-300 text-gray-900 rounded-lg p-2 focus:ring-blue-500 focus:border-blue-500"
+                placeholder="Serie" required />
+              <div *ngIf="formulario.controls['serie'].invalid && formulario.controls['serie'].touched"
+                class="text-red-500 text-sm mt-1">
+                Este campo es obligatorio.
+              </div>
+            </div>
+
+            <!-- Pax Input -->
+            <div>
+              <label for="pax" class="block text-sm font-medium text-gray-700">Pax *</label>
+              <input type="text" id="pax" formControlName="pax"
+                class="mt-1 block w-full bg-gray-50 border border-gray-300 text-gray-900 rounded-lg p-2 focus:ring-blue-500 focus:border-blue-500"
+                placeholder="Pax" required />
+              <div *ngIf="formulario.controls['pax'].invalid && formulario.controls['pax'].touched"
+                class="text-red-500 text-sm mt-1">
+                Este campo es obligatorio.
+              </div>
+            </div>
+
+            <!-- Signature -->
+            <ion-card>
+              <div class="grid grid-cols-1 gap-4">
+                <label for="firma" class="block text-sm font-semibold text-gray-700">Firma usuario</label>
+                <div>
+                  <div class="flex justify-center items-center">
+                    <img [src]="firma" alt="">
+                  </div>
+                  @if(!firma){
+                  <ion-button style="--background: var(--color-pantone-312c)" id="open-signature" expand="block"
+                    class="mt-4">Firma usuario
+                    <ion-icon name="create" class="pl-4"></ion-icon>
+                  </ion-button>
+                  }@else{
+                  <ion-button style="--background: var(--color-pantone-312c)" id="open-signature" expand="block"
+                    class="mt-4">Editar Firma
+                    <ion-icon name="create" class="pl-4"></ion-icon>
+                  </ion-button>
+
+                  }
+                </div>
+              </div>
+            </ion-card>
+          </div>
+        </div>
+
+        <div class="text-right mt-6">
+          <button type="submit" [disabled]="formulario.invalid"
+            class="inline-flex items-center px-6 py-3 text-base font-medium text-white bg-pantone-286c rounded-lg hover:bg-pantone-cool-gray focus:ring-4 focus:outline-none focus:ring-black-35">
+            Enviar
+          </button>
+        </div>
+      </form>
+    </ion-card>
+  </div>
+</ion-content>
+
+<!--Modals-->
+
+<!--Scanner Qr modal-->
+<ion-modal #modalQrScanner trigger="open-qr">
+  <ng-template>
+    <ion-content>
+      <ion-toolbar>
+        <ion-title>Escanear QR</ion-title>
+        <ion-buttons slot="end">
+          <ion-button color="light" (click)="modalQrScanner.dismiss()">Cerrar</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+      <app-qr-scanner></app-qr-scanner>
+    </ion-content>
+  </ng-template>
+</ion-modal>
+
+<!--Signature Modal-->
+<ion-modal #modal trigger="open-signature">
+  <ng-template>
+    <ion-content>
+      <ion-toolbar>
+        <ion-title>Firma usuario</ion-title>
+        <ion-buttons slot="end">
+          <ion-button color="light" (click)="modal.dismiss()">Cerrar</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+      <app-signature (childEmitter)="recibirFirma($event)"></app-signature>
+    </ion-content>
+  </ng-template>
+</ion-modal>

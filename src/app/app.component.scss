@@ -1,0 +1,132 @@
+img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+ion-header {
+    height: 10rem;
+
+    div.bg {
+        height: 10rem;
+        background: linear-gradient(170deg, var(--color-pantone-312c) 8%,var(--color-pantone-286c)  30%);
+        transform: rotate(-15deg);
+        width: 130%;
+        border-radius: 10px 10px 10px 50px;
+        margin-top: -3rem;
+        margin-left: -1rem;
+        box-shadow: 0 1px 10px rgba(41, 43, 122, 0.5)
+    }
+
+    ion-item {
+        --background: transparent;
+        position: absolute;
+        top: 1rem;
+        left: 0;
+
+        ion-avatar {
+            height: 5rem;
+            width: 5rem;
+            border-radius: 50%;
+            border: 5px solid var(--color-pantone-312c);
+            margin-right: 0.6rem;
+
+
+        }
+
+        ion-label {
+            color: white;
+            font-size: 1rem;
+            font-weight: bold;
+            width: auto;
+            letter-spacing: 0.5px;
+
+            p {
+                margin-top: 2px;
+                font-size: 0.8rem;
+                font-weight: normal;
+            }
+        }
+    }
+}
+
+ion-content {
+    .menu-items {
+
+        letter-spacing: 0.5px;
+        padding-left: 1rem;
+
+        ion-icon {
+            padding-right: 0.6rem;
+            color: var(--color-pantone-cool-gray);
+        }
+
+        ion-item {
+            border-left: 5px solid #fff;
+
+            ion-select {
+                margin-left: 1rem
+            }
+        }
+
+        ion-item.selected {
+            border-left: 5px solid var(--color-pantone-130c);
+
+            ion-label {
+                font-size: 1.1rem;
+            }
+
+            ion-label {
+                font-weight: bold;
+            }
+
+            ion-icon,
+            ion-label {
+                color: var(--color-pantone-286c);
+            }
+
+        }
+
+    }
+}
+
+.md {
+    .menu-items {
+        ion-icon {
+            margin-right: 1rem;
+        }
+    }
+}
+
+ion-modal {
+    ion-item {
+        --background: transparent;
+        --color: black;
+        --padding-start: 1rem;
+        --padding-end: 1.2rem;
+        --padding-top: 0.5rem;
+        --padding-bottom: 0.5rem;
+
+        ion-icon{
+            color :var(--color-pantone-312c)
+        }
+    }
+
+
+    ion-item:hover {
+        background-color: rgba(41, 43, 122, 0.1);
+    }
+
+    h2 {
+        padding-left: 1.3rem;
+        font-size: 1.2rem;
+        font: bold;
+    }
+
+    p {
+        padding-left: 1.3rem;
+        font-size: 0.9rem;
+    }
+
+
+}

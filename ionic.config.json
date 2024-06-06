@@ -1,0 +1,7 @@
+{
+  "name": "anesa",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
